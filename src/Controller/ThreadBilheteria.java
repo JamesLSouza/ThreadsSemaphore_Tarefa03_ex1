@@ -24,14 +24,14 @@ public class ThreadBilheteria extends Thread {
 		System.out.println("Pessoa " + id + " Digite sua senha : ");
 		try {
 			int tempo = (int) (Math.random() * 1950) + 51;
-			System.out.println("Pessoa " + id + " Aguade a autentificação...");
+			System.out.println("Pessoa " + id + " Aguade...");
 			sleep(tempo);
 			if (tempo >= 1000) {
-				System.out.println("Pessoa " + id + "Login realizado com sucesso, prossiga para a proxíma etapa");
+				System.out.println("Pessoa " + id + "Login realizado com sucesso");
 				compra();
 			} else {
 				System.out.println(
-						"Pessoa " + id + " Erro de carregamento \n Não será possivel realizar a compra do ingresso");
+						"Pessoa " + id + " Erro de carregamento \n Tente novamente");
 			}
 		} catch (InterruptedException e) {
 			e.printStackTrace();
@@ -40,17 +40,17 @@ public class ThreadBilheteria extends Thread {
 	}
 
 	private void compra() {
-		System.out.println("Pessoa " + id + " Bem-vindo ao processo de compra do show ");
+		System.out.println("Pessoa " + id + " Bem-vindo ao processo de compra");
 		try {
 			int tempo = (int) (Math.random() * 3001) + 1001;
-			System.out.println("Aguarde a autentificação de compra");
+			System.out.println("Autenticando compra");
 			sleep(tempo);
 			if (tempo <= 2500) {
-				System.out.println("Autentificação autorizada ");
+				System.out.println("Autentificação realizada ");
 				finalizar();
 			} else {
 				System.out.println(
-						"Pessoa " + id + " Seu tempo de sessão expirou, e não será possivel realizar a compra");
+						"Pessoa " + id + " Seu tempo de sessão expirou, Tente novamente");
 			}
 		} catch (InterruptedException e) {
 			// TODO Auto-generated catch block
@@ -64,15 +64,15 @@ public class ThreadBilheteria extends Thread {
 			semaforo.acquire();
 			int compras = (int) (Math.random() * 4) + 1;
 			if (compras <= ingresso) {
-				System.out.println("Parabens Pessoa" + id + " Você comprou " + compras + " ingressos");
+				System.out.println("Pessoa" + id + " Você comprou " + compras + " ingressos");
 				ingresso -= compras;
-				System.out.println("Ainda restam " + ingresso + " ingressos");
+				System.out.println("Restam " + ingresso + " ingressos");
 			} else {
 				System.out.println(
-						"Infelizmente não temos esse tanto de ingressos disponivel. Não será possivel realizar a compra ");
+						"Infelizmente não temos essa quantidade de ingressos disponivel. Não será possivel realizar a compra ");
 			}
 			if (ingresso == 0) {
-				System.out.println("OS ingressos acabaram");
+				System.out.println("Os ingressos acabaram");
 			}
 
 		} catch (InterruptedException e) {
